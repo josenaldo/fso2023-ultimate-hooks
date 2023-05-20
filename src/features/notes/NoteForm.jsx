@@ -15,7 +15,7 @@ const NoteForm = ({ noteService }) => {
       <form onSubmit={handleNoteSubmit}>
         <label {...content.label} />
         <input {...content.input} />
-        <button>Create</button>
+        <button type="submit">Create</button>
       </form>
     </article>
   )
