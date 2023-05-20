@@ -1,6 +1,6 @@
 import { useField } from '@/features/form'
 
-const PersonForm = ({ noteService: personService }) => {
+const PersonForm = ({ personService }) => {
   const name = useField('text', 'name', 'Name')
   const number = useField('text', 'number', 'Number')
 

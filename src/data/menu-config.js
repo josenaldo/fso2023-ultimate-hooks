@@ -4,6 +4,14 @@ const menuConfig = [
     path: '/',
   },
   {
+    title: 'Notes',
+    path: '/notes',
+  },
+  {
+    title: 'Persons',
+    path: '/persons',
+  },
+  {
     title: 'About',
     path: '/about',
   },

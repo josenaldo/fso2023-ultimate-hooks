@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 
-import { useField } from '@/features/form'
 import { useResource } from '@/features/resource'
-import { NoteForm, Notes, NOTES_BASE_URL } from '@/features/notes'
-import { PersonForm, Persons, PERSON_BASE_URL } from '@/features/persons'
+import { Notes, NOTES_BASE_URL } from '@/features/notes'
+import { Persons, PERSON_BASE_URL } from '@/features/persons'
 
 const HomePage = () => {
   const [notes, noteService] = useResource(NOTES_BASE_URL)
@@ -11,11 +10,11 @@ const HomePage = () => {
 
   return (
     <div>
-      <NoteForm noteService={noteService} />
-      <Notes notes={notes} />
+      <h2>Notes</h2>
+      <Notes notes={notes} noteService={noteService} />
 
-      <PersonForm personService={personService} />
-      <Persons persons={persons} />
+      <h2>Persons</h2>
+      <Persons persons={persons} personService={personService} />
     </div>
   )
 }
