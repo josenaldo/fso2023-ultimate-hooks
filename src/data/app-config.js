@@ -2,13 +2,12 @@ const appConfig = {
   application: {
     name: 'Ultimate Hooks',
     version: '0.0.1',
-    description:
-      '',
+    description: '',
   },
   footer: {
     createdBy: 'Josenaldo Matos',
-    repository: 'https://github.com/josenaldo/vite-js-react-minimal',
-    copyrigth: '2021',
+    repository: 'https://github.com/josenaldo/fso2023-ultimate-hooks',
+    copyrigth: '2023',
   },
 }
 

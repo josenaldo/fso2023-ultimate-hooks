@@ -1,49 +1,15 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect } from 'react'
-import axios from 'axios'
 
-const useField = (type) => {
-  const [value, setValue] = useState('')
-
-  const onChange = (event) => {
-    setValue(event.target.value)
-  }
-
-  return {
-    type,
-    value,
-    onChange,
-  }
-}
-
-const useResource = (baseUrl) => {
-  const [resources, setResources] = useState([])
-
-  // ...
-
-  const create = (resource) => {
-    // ...
-  }
-
-  const service = {
-    create,
-  }
-
-  return [resources, service]
-}
+import { useField } from '@/features/form'
+import { useResource } from '@/features/resource'
+import { NoteForm, Notes, NOTES_BASE_URL } from '@/features/notes'
 
 const HomePage = () => {
-  const content = useField('text')
-  const name = useField('text')
-  const number = useField('text')
+  const name = useField('text', 'name', 'Name')
+  const number = useField('text', 'number', 'Number')
 
-  const [notes, noteService] = useResource('http://localhost:3005/notes')
+  const [notes, noteService] = useResource(NOTES_BASE_URL)
   const [persons, personService] = useResource('http://localhost:3005/persons')
-
-  const handleNoteSubmit = (event) => {
-    event.preventDefault()
-    noteService.create({ content: content.value })
-  }
 
   const handlePersonSubmit = (event) => {
     event.preventDefault()
@@ -51,19 +17,13 @@ const HomePage = () => {
   }
   return (
     <div>
-      <h2>notes</h2>
-      <form onSubmit={handleNoteSubmit}>
-        <input {...content} />
-        <button>create</button>
-      </form>
-      {notes.map((n) => (
-        <p key={n.id}>{n.content}</p>
-      ))}
+      <NoteForm noteService={noteService} />
+      <Notes notes={notes} />
 
       <h2>persons</h2>
       <form onSubmit={handlePersonSubmit}>
-        name <input {...name} /> <br />
-        number <input {...number} />
+        name <input {...name.input} /> <br />
+        number <input {...number.input} />
         <button>create</button>
       </form>
       {persons.map((n) => (
